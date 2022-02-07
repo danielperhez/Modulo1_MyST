@@ -11,5 +11,7 @@ Daniel Pérez, estudiante de octavo semestre de ingeniería financiera en el ITE
 # Licencia
 MIT 
 
+A short and simple permissive license with conditions only requiring preservation of copyright and license notices. Licensed works, modifications, and larger works may be distributed under different terms and without source code.
+
 # Contacto
 Para más información respecto a este repositorio, porfavor contactar al siguiente correo: if722627@iteso.mx 
