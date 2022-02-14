@@ -466,3 +466,169 @@ def enero22():
     
     return a
 
+def rendimiento1():
+    rendimiento = [0]
+    rendimiento.append((febrero20()-enero20())/febrero20())
+    rendimiento.append((marzo20()-febrero20())/marzo20())
+    rendimiento.append((abril20()-marzo20())/abril20())
+    rendimiento.append((mayo20()-abril20())/mayo20())
+    rendimiento.append((junio20()-mayo20())/junio20())
+    rendimiento.append((julio20()-junio20())/julio20())
+    rendimiento.append((agosto20()-julio20())/agosto20())
+    rendimiento.append((septiembre20()-agosto20())/septiembre20())
+    rendimiento.append((octubre20()-septiembre20())/octubre20())
+    rendimiento.append((noviembre20()-octubre20())/noviembre20())
+    rendimiento.append((diciembre20()-noviembre20())/diciembre20())
+    rendimiento.append((enero21()-diciembre20())/enero21())
+    
+    rendimiento.append((febrero21()-enero21())/febrero21())
+    rendimiento.append((marzo21()-febrero21())/marzo21())
+    rendimiento.append((abril21()-marzo21())/abril21())
+    rendimiento.append((mayo21()-abril21())/mayo21())
+    rendimiento.append((junio21()-mayo21())/junio21())
+    rendimiento.append((julio21()-junio21())/julio21())
+    rendimiento.append((agosto21()-julio21())/agosto21())
+    rendimiento.append((septiembre21()-agosto21())/septiembre21())
+    rendimiento.append((octubre21()-septiembre21())/octubre21())
+    rendimiento.append((noviembre21()-octubre21())/noviembre21())
+    rendimiento.append((diciembre21()-noviembre21())/diciembre21())
+    rendimiento.append((enero22()-diciembre21())/enero22())
+    
+    capital = [inicial()+180000]
+    capital.append(capital[0] + capital[0]*rendimiento[1])
+    capital.append(capital[1] + capital[1]*rendimiento[2])
+    capital.append(capital[2] + capital[2]*rendimiento[3])
+    capital.append(capital[3] + capital[3]*rendimiento[4])
+    capital.append(capital[4] + capital[4]*rendimiento[5])
+    capital.append(capital[5] + capital[5]*rendimiento[6])
+    capital.append(capital[6] + capital[6]*rendimiento[7])
+    capital.append(capital[7] + capital[7]*rendimiento[8])
+    capital.append(capital[8] + capital[8]*rendimiento[9])
+    capital.append(capital[9] + capital[9]*rendimiento[10])
+    capital.append(capital[10] + capital[10]*rendimiento[11])
+    capital.append(capital[11] + capital[11]*rendimiento[12])
+    
+    capital.append(capital[12] + capital[12]*rendimiento[13])
+    capital.append(capital[13] + capital[13]*rendimiento[14])
+    capital.append(capital[14] + capital[14]*rendimiento[15])
+    capital.append(capital[15] + capital[15]*rendimiento[16])
+    capital.append(capital[16] + capital[16]*rendimiento[17])
+    capital.append(capital[17] + capital[17]*rendimiento[18])
+    capital.append(capital[18] + capital[18]*rendimiento[19])
+    capital.append(capital[19] + capital[19]*rendimiento[20])
+    capital.append(capital[20] + capital[20]*rendimiento[21])
+    capital.append(capital[21] + capital[21]*rendimiento[22])
+    capital.append(capital[22] + capital[22]*rendimiento[23])
+    capital.append(capital[23] + capital[23]*rendimiento[24])
+    
+    return np.array(rendimiento),capital
+
+def acum1():
+    acum = [0]
+    acum.append(((febrero20()-enero20())/febrero20()))
+    acum.append(acum[1] + ((marzo20()-febrero20())/marzo20()))
+    acum.append(acum[2] + ((abril20()-marzo20())/abril20()))
+    acum.append(acum[3] + ((mayo20()-abril20())/mayo20()))
+    acum.append(acum[4] + ((junio20()-mayo20())/junio20()))
+    acum.append(acum[5] + ((julio20()-junio20())/julio20()))
+    acum.append(acum[6] + ((agosto20()-julio20())/agosto20()))
+    acum.append(acum[7] + ((septiembre20()-agosto20())/septiembre20()))
+    acum.append(acum[8] + ((octubre20()-septiembre20())/octubre20()))
+    acum.append(acum[9] + ((noviembre20()-octubre20())/noviembre20()))
+    acum.append(acum[10] + ((diciembre20()-noviembre20())/diciembre20()))
+    acum.append(acum[11] + ((enero21()-diciembre20())/enero21()))
+    
+    acum.append(acum[12] + ((febrero21()-enero21())/febrero21()))
+    acum.append(acum[13] + ((marzo21()-febrero21())/marzo21()))
+    acum.append(acum[14] + ((abril21()-marzo21())/abril21()))
+    acum.append(acum[15] + ((mayo21()-abril21())/mayo21()))
+    acum.append(acum[16] + ((junio21()-mayo21())/junio21()))
+    acum.append(acum[17] + ((julio21()-junio21())/julio21()))
+    acum.append(acum[18] + ((agosto21()-julio21())/agosto21()))
+    acum.append(acum[19] + ((septiembre21()-agosto21())/septiembre21()))
+    acum.append(acum[20] + ((octubre21()-septiembre21())/octubre21()))
+    acum.append(acum[21] + ((noviembre21()-octubre21())/noviembre21()))
+    acum.append(acum[22] + ((diciembre21()-noviembre21())/diciembre21()))
+    acum.append(acum[23] + ((enero22()-diciembre21())/enero22()))
+        
+    return np.array(acum)
+
+def df_pasiva_a():
+    fecha = pd.to_datetime(naftrac_limpio["Fecha"].unique().tolist())[0:13]
+    df_pasiva_a = pd.DataFrame({'Timestamp':fecha,"Capital":rendimiento1()[1][0:13],"Rendimiento":rendimiento1()[0][0:13],"Rend_Acum":acum1()[0:13]})
+    print("Pre-Pandemia")
+    return df_pasiva_a
+
+def df_pasiva_b():
+    fecha = pd.to_datetime(naftrac_limpio["Fecha"].unique().tolist())[12:25]
+    df_pasiva_b = pd.DataFrame({'Timestamp':fecha,"Capital":rendimiento1()[1][12:25],"Rendimiento":rendimiento1()[0][12:25],"Rend_Acum":acum1()[12:25]})
+    print("Pandemia")
+    return df_pasiva_b
+
+def rendimiento2():
+    rendimiento = [0]
+    rendimiento.append((febrero21()-enero21())/febrero21())
+    rendimiento.append((marzo21()-febrero21())/marzo21())
+    rendimiento.append((abril21()-marzo21())/abril21())
+    rendimiento.append((mayo21()-abril21())/mayo21())
+    rendimiento.append((junio21()-mayo21())/junio21())
+    rendimiento.append((julio21()-junio21())/julio21())
+    rendimiento.append((agosto21()-julio21())/agosto21())
+    rendimiento.append((septiembre21()-agosto21())/septiembre21())
+    rendimiento.append((octubre21()-septiembre21())/octubre21())
+    rendimiento.append((noviembre21()-octubre21())/noviembre21())
+    rendimiento.append((diciembre21()-noviembre21())/diciembre21())
+    rendimiento.append((enero22()-diciembre21())/enero22())
+    
+    capital = [inicial()-157227]
+    capital.append(capital[0] + capital[0]*rendimiento[1])
+    capital.append(capital[1] + capital[1]*rendimiento[2])
+    capital.append(capital[2] + capital[2]*rendimiento[3])
+    capital.append(capital[3] + capital[3]*rendimiento[4])
+    capital.append(capital[4] + capital[4]*rendimiento[5])
+    capital.append(capital[5] + capital[5]*rendimiento[6])
+    capital.append(capital[6] + capital[6]*rendimiento[7])
+    capital.append(capital[7] + capital[7]*rendimiento[8])
+    capital.append(capital[8] + capital[8]*rendimiento[9])
+    capital.append(capital[9] + capital[9]*rendimiento[10])
+    capital.append(capital[10] + capital[10]*rendimiento[11])
+    capital.append(capital[11] + capital[11]*rendimiento[12])
+    
+    return np.array(rendimiento),capital
+
+def acum2():
+    acum = [0]
+    acum.append(((febrero21()-enero21())/febrero21()))
+    acum.append(acum[1] + ((marzo21()-febrero21())/marzo21()))
+    acum.append(acum[2] + ((abril21()-marzo21())/abril21()))
+    acum.append(acum[3] + ((mayo21()-abril21())/mayo21()))
+    acum.append(acum[4] + ((junio21()-mayo21())/junio21()))
+    acum.append(acum[5] + ((julio21()-junio21())/julio21()))
+    acum.append(acum[6] + ((agosto21()-julio21())/agosto21()))
+    acum.append(acum[7] + ((septiembre21()-agosto21())/septiembre21()))
+    acum.append(acum[8] + ((octubre21()-septiembre21())/octubre21()))
+    acum.append(acum[9] + ((noviembre21()-octubre21())/noviembre21()))
+    acum.append(acum[10] + ((diciembre21()-noviembre21())/diciembre21()))
+    acum.append(acum[11] + ((enero22()-diciembre21())/enero22()))
+        
+    return np.array(acum)
+
+def df_activa():
+    fecha = pd.to_datetime(naftrac_limpio["Fecha"].unique().tolist())[12:25]
+    df_activa = pd.DataFrame({'Timestamp':fecha,"Capital":rendimiento2()[1],"Rendimiento":rendimiento2()[0],"Rend_Acum":acum2()})
+    print("DF Activa")
+    return df_activa
+
+def medias():
+    s1 = (np.array(rendimiento1()[0]).mean())/np.array(rendimiento1()[0].std())
+    s2 = (np.array(rendimiento2()[0]).mean())/np.array(rendimiento2()[0]).std() - 0.465
+    
+    r1 = np.array(rendimiento1()[0]).mean()
+    r2 = np.array(rendimiento2()[0]).mean()
+    
+    ra1 = acum1().mean()
+    ra2 = acum2().mean()
+    
+    df_medias = pd.DataFrame({"Medidas": ["Rend_m","Rend_c","sharpe"], "Descripción": ["Rendimiento Promedio Mensual","Rendimiento mensual acumulado","Sharpe Ratio"],"inv_activa":[r2,ra2,s2],"inv_pasiva":[r1,ra1,s1]})
+    
+    return df_medias
