@@ -1,3 +1,11 @@
+import numpy as np
+import pandas as pd
+import datetime
+import yfinance as yf
+import warnings
+
+naftrac = pd.read_csv('files/NAFTRAC_holdings.csv')
+
 def Unique_counts(data: "Data Frame que se va a utilizar", 
                   name: "Nombre (entre comillas) de la columna del que se quieren los valores únicos",
                   cantidad: "Cantidad de veces a mostrar"):
@@ -45,7 +53,7 @@ def nuevo_DataFrame(data: "Data Frame que se va a utilizar",
     a = a[filtro5]
     
     
-    a[columna_fecha] = pd.to_datetime(a[columna_fecha])
+    a[columna_fecha] = pd.to_datetime(a[columna_fecha],infer_datetime_format=True)
     
     a[tikers] = a[tikers]+[".MX"]
     
@@ -78,6 +86,9 @@ def precios (data: "Data Frame que se va a utilizar",
         i+1
     
     return a
+
+naftrac_limpio = nuevo_DataFrame(naftrac,"Nombre",25,"Fecha","Ticker")
+precio = precios(naftrac,"Nombre",25,"Fecha","Ticker") 
 
 def inicial():
     capital = 1000000
@@ -553,14 +564,15 @@ def acum1():
         
     return np.array(acum)
 
-def df_pasiva_a():
-    fecha = pd.to_datetime(naftrac_limpio["Fecha"].unique().tolist())[0:13]
+def df_pasiva_a(df_limpio):
+
+    fecha = pd.to_datetime(df_limpio["Fecha"].unique().tolist())[0:13]
     df_pasiva_a = pd.DataFrame({'Timestamp':fecha,"Capital":rendimiento1()[1][0:13],"Rendimiento":rendimiento1()[0][0:13],"Rend_Acum":acum1()[0:13]})
     print("Pre-Pandemia")
     return df_pasiva_a
 
-def df_pasiva_b():
-    fecha = pd.to_datetime(naftrac_limpio["Fecha"].unique().tolist())[12:25]
+def df_pasiva_b(df_limpio):
+    fecha = pd.to_datetime(df_limpio["Fecha"].unique().tolist())[12:25]
     df_pasiva_b = pd.DataFrame({'Timestamp':fecha,"Capital":rendimiento1()[1][12:25],"Rendimiento":rendimiento1()[0][12:25],"Rend_Acum":acum1()[12:25]})
     print("Pandemia")
     return df_pasiva_b
@@ -613,11 +625,11 @@ def acum2():
         
     return np.array(acum)
 
-def df_activa():
-    fecha = pd.to_datetime(naftrac_limpio["Fecha"].unique().tolist())[12:25]
-    df_activa = pd.DataFrame({'Timestamp':fecha,"Capital":rendimiento2()[1],"Rendimiento":rendimiento2()[0],"Rend_Acum":acum2()})
+def df_activa(df_limpio):
+    fecha = pd.to_datetime(df_limpio["Fecha"].unique().tolist())[12:25]
+    df_activo = pd.DataFrame({'Timestamp':fecha,"Capital":rendimiento2()[1],"Rendimiento":rendimiento2()[0],"Rend_Acum":acum2()})
     print("DF Activa")
-    return df_activa
+    return print("Activo"), df_activo
 
 def medias():
     s1 = (np.array(rendimiento1()[0]).mean())/np.array(rendimiento1()[0].std())
