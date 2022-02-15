@@ -628,8 +628,8 @@ def acum2():
 def df_activa(df_limpio):
     fecha = pd.to_datetime(df_limpio["Fecha"].unique().tolist())[12:25]
     df_activo = pd.DataFrame({'Timestamp':fecha,"Capital":rendimiento2()[1],"Rendimiento":rendimiento2()[0],"Rend_Acum":acum2()})
-    print("DF Activa")
-    return print("Activo"), df_activo
+    print("Df Activa")
+    return df_activo
 
 def medias():
     s1 = (np.array(rendimiento1()[0]).mean())/np.array(rendimiento1()[0].std())
@@ -641,6 +641,6 @@ def medias():
     ra1 = acum1().mean()
     ra2 = acum2().mean()
     
-    df_medias = pd.DataFrame({"Medidas": ["Rend_m","Rend_c","sharpe"], "Descripción": ["Rendimiento Promedio Mensual","Rendimiento mensual acumulado","Sharpe Ratio"],"inv_activa":[r2,ra2,s2],"inv_pasiva":[r1,ra1,s1]})
+    df_medias = pd.DataFrame({"Medidas": ["Rend_m","Rend_c","sharpe"], "Descripción": ["Rendimiento Promedio Mensual","Rendimiento mensual acumulado","Sharpe Ratio"],"inv_activa":[r1,ra1,s1],"inv_pasiva":[r2,ra2,s2]})
     
     return df_medias
